@@ -24,9 +24,9 @@ unsafe extern "system" fn window_proc(
             PostQuitMessage(0);
         }
         WM_PAINT => {
-            /*
-            let mut paint: PAINTSTRUCT = PAINTSTRUCT::Default();
-            let mut rect: RECT = RECT::Default();
+            
+            let mut paint: PAINTSTRUCT = std::mem::zeroed();
+            let mut rect: RECT = std::mem::zeroed();
             let mut myString: Vec<u16> = OsStr::new("Hello, World").encode_wide().collect();
             myString.push(0);
             let DeviceContext = BeginPaint(h_wnd, &mut paint);
@@ -34,7 +34,7 @@ unsafe extern "system" fn window_proc(
             DrawTextW(DeviceContext, myString.as_ptr() , -1,
              &mut rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
             EndPaint(h_wnd, &paint);
-            */
+            
 
         }
         _ => {
